@@ -1,0 +1,46 @@
+name: CI/CD for Greeting React App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: set up Node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm Install
+
+      - name: skip Tests for CI/CD Demo
+        run: echo "skipping tests for this class demo"
+
+      - name: build React App
+        run: CI=false npm run build
+
+      - name: Login to Docker Hub
+        uses: docker/Login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
+
+      - name: build Docker Image
+        run: docker build -t ${{ secrets.DOCKER_USER }}/greeting:latest .
+
+      - name: push Docker Image
+        run: docker push -t ${{ secrets.DOCKER_USER }}/greeting:latest .
+
+
+
