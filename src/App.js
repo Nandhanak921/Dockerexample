@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import React from 'react';
-import Getfront from './component/Getfront';
+// import Getfront from './component/Getfront';
 import Helloapi from './component/helloapi';
 import Register from './component/register';
 import Login from './component/login';
@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path='get' element={<Getfront/>}></Route>
+        {/* <Route path='get' element={<Getfront/>}></Route> */}
         <Route path='hello' element={<Helloapi/>}></Route>
         <Route path='reg' element={<Register/>}></Route>
         <Route path='login' element={<Login/>}></Route>
