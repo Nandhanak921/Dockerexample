@@ -22,7 +22,7 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm Install
+        run: npm install
 
       - name: skip Tests for CI/CD Demo
         run: echo "skipping tests for this class demo"
